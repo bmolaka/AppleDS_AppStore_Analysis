@@ -128,7 +128,7 @@ left join trans_dedup d
 on a.content_id=d.content_id
 group by 1,2,3,4);
 
--- create final account dataset
+-- create final app level dataset
 drop table if exists app_temp1;
 create temp table app_temp1 as 
 (select 
@@ -148,7 +148,7 @@ left join trans_dedup c
 on b.content_id=c.content_id 
 group by 1,2,3,4,5,6,7);
 
--- output the combined account data into a csv file
+-- output the combined app level data into a csv file
 SELECT * FROM app_temp1
 INTO OUTFILE '\Users\bmolaka\Desktop\Apple-DS\final_app_dat.csv'
 FIELDS ENCLOSED BY '"'
